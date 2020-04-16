@@ -13,9 +13,7 @@ class TriviaTestCase(unittest.TestCase):
         self.app = app
         self.client = app.test_client
         self.database_name = "casting_test"
-        self.database_path = "postgres://{}/{}".format(
-            'localhost:5432', self.database_name)
-        setup_db(self.app, self.database_path)
+        self.database_path = os.getenv('DATABASE_URL')
         self.app.config['DEBUG'] = False
         self.headers = {'Content-Type': 'application/json', 'Authorization': f'Bearer {baseauth_token}' }
         self.actor_data = json.dumps({
