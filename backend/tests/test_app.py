@@ -8,7 +8,7 @@ baseauth_token = os.getenv('TOKEN1')
 second_level_auth_token = os.getenv('TOKEN2')
 maxium_auth = os.getenv('TOKEN3')
 
-class TriviaTestCase(unittest.TestCase):
+class CastingAgencyTestCase(unittest.TestCase):
     def setUp(self):
         self.app = app
         self.client = app.test_client
