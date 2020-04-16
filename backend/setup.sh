@@ -1,2 +1,2 @@
-createdb castingagency
-createdb casting_test
+export FLASK_DEBUG=False
+export SECRET_KEY="randodando"
