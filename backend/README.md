@@ -1,4 +1,4 @@
-# Coffee Shop Backend
+# Casthing Agency API
 
 ## Getting Started
 
@@ -37,7 +37,7 @@ From within the `./src` directory first ensure you are working using your create
 Each time you open a new terminal session, run:
 
 ```bash
-export FLASK_APP=api.py;
+export FLASK_APP=app.py;
 ```
 
 To run the server, execute:
@@ -50,36 +50,51 @@ The `--reload` flag will detect file changes and restart the server automaticall
 
 ## Tasks
 
-### Setup Auth0
+### API Endpoints
+N.B All endpoints require an access token, gets only require tier 1 access, the remaining require tiers 2 and 3.
+## Get
+# GET /movies
+    ```bash
+    returns all movies
+    ```
+# GET /actors
+    ```bash
+    returns all movies
+    ```
 
-1. Create a new Auth0 Account
-2. Select a unique tenant domain
-3. Create a new, single page web application
-4. Create a new API
-    - in API Settings:
-        - Enable RBAC
-        - Enable Add Permissions in the Access Token
-5. Create new API permissions:
-    - `get:drinks-detail`
-    - `post:drinks`
-    - `patch:drinks`
-    - `delete:drinks`
-6. Create new roles for:
-    - Barista
-        - can `get:drinks-detail`
-    - Manager
-        - can perform all actions
-7. Test your endpoints with [Postman](https://getpostman.com). 
-    - Register 2 users - assign the Barista role to one and Manager role to the other.
-    - Sign into each account and make note of the JWT.
-    - Import the postman collection `./starter_code/backend/udacity-fsnd-udaspicelatte.postman_collection.json`
-    - Right-clicking the collection folder for barista and manager, navigate to the authorization tab, and including the JWT in the token field (you should have noted these JWTs).
-    - Run the collection and correct any errors.
-    - Export the collection overwriting the one we've included so that we have your proper JWTs during review!
+## POST
 
-### Implement The Server
+# /movies
+creates a new actor, example:
+    ```bash
+    {
+      "title": "new_title",
+      "release_date": "2020-15-20"
+    }
+    ```
 
-There are `@TODO` comments throughout the `./backend/src`. We recommend tackling the files in order and from top to bottom:
+# /actors
+creates a new actor, exmaple request:
+    ```bash
+    {
+      "name": "Hannah Carter",
+      "age": 23,
+      "gender": "Female"
+    }
+    ```
+## PATCH
+# /actor/<actor_id>
+updates a specific actor based on id, all fields are required. Example request:
+    ```bash
+    {
+      "name": "Drew Karn",
+      "age": 23,
+      "gender": "Male"
+    }
+    ```
+## Delete
+# /actors/<actor_id>
+Deletes the actor based on specific id
 
-1. `./src/auth/auth.py`
-2. `./src/api.py`
+# /movies
+Deletes the movie based on the specified ids
