@@ -3,8 +3,7 @@ from sqlalchemy import Column, String, Integer, create_engine, select
 from flask_sqlalchemy import SQLAlchemy
 import json
 
-database_name = "castingagency"
-# database_path = "postgres://{}/{}".format('localhost:5432', database_name)
+
 database_path = os.getenv('DATABASE_URL')
 
 db = SQLAlchemy()
@@ -59,6 +58,7 @@ class Actor(db.Model):
             'age': self.age,
             'gender': self.gender
         }
+
     def pull_back():
         db.session.rollback()
 
